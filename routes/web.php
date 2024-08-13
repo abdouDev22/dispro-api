@@ -12,7 +12,7 @@ Route::get('/', function () {
 });
 
 // Routes API pour les ressources
-Route::prefix('api')->group(function () {
+Route::middleware('apikey')->prefix('api')->group(function () {
     Route::apiResource('cars', CarController::class);
     Route::apiResource('users', UserController::class);
     Route::apiResource('counts', CountController::class);

@@ -13,21 +13,25 @@ class CarController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'matricule' => 'required|string|unique:cars',
-            'nombre_de_chevaux' => 'required|integer',
-        ]);
+{
+    $request->validate([
+        'matricule' => 'required|string|unique:cars',
+        'nombre_de_chevaux' => 'required|integer',
+    ]);
 
-        $car = Car::create($request->all());
+    $car = Car::create($request->all());
 
-        return response()->json($car, 201);
+    return response()->json($car, 201);
+}
+
+    public function show($id)
+{
+    $car = Car::find($id);
+    if (!$car) {
+        return response()->json(['message' => 'Car not found'], 404);
     }
-
-    public function show(Car $car)
-    {
-        return response()->json($car);
-    }
+    return response()->json($car);
+}
 
     public function update(Request $request, Car $car)
     {
