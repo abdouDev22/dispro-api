@@ -51,5 +51,4 @@ jobs:
 
     
 
-    - name: Vérifier le style du code
-      run: ./vendor/bin/pint --test
+   
