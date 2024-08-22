@@ -13,7 +13,6 @@ Bienvenue sur la documentation de l'API Dispro. Cette API permet de gérer les v
   - [Counts](#counts)
   - [Maintenances](#maintenances)
 - [Contribuer](#contribuer)
-- [Licence](#licence)
 
 ## Installation
 
@@ -87,6 +86,3 @@ L'API Dispro expose plusieurs endpoints pour gérer les différentes entités de
 
 Les contributions sont les bienvenues ! Veuillez consulter le guide de contribution pour plus de détails.
 
-## Licence
-
-Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus de détails.
