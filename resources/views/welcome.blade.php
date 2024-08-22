@@ -1,7 +1,9 @@
-<html><head><base href="https://websimcreation.com/api/utilisation">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>API Documentation - Dispro</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation API - Dispro</title>
 <style>
   body {
     font-family: Arial, sans-serif;

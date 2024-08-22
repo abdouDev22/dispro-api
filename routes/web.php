@@ -5,16 +5,8 @@ use App\Http\Controllers\CarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CountController;
 use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\AuthController;
 
-// Route pour la page d'accueil
 Route::get('/', function () {
     return view('welcome');
-});
-
-// Routes API pour les ressources
-Route::middleware('apikey')->prefix('api')->group(function () {
-    Route::apiResource('cars', CarController::class);
-    Route::apiResource('users', UserController::class);
-    Route::apiResource('counts', CountController::class);
-    Route::apiResource('maintenances', MaintenanceController::class);
 });

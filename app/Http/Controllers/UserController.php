@@ -14,11 +14,7 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'fullname' => 'required|string',
-            'nni' => 'required|string|unique:users',
-            'department' => 'required|string',
-        ]);
+        
 
         $user = User::create($request->all());
 
@@ -27,12 +23,7 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $request->validate([
-            'fullname' => 'string',
-            'nni' => 'string|unique:users,nni,' . $user->id,
-            'department' => 'string',
-        ]);
-
+       
         $user->update($request->all());
 
         return response()->json($user);
