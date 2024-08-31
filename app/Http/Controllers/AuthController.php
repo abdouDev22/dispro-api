@@ -36,7 +36,7 @@ class AuthController extends Controller
         $user->save();
         return response()->json(['message' => 'Déconnexion réussie'], 200);
     }
-    return response()->json(['message' => 'Token invalide'], 401);
+    return response()->json(['message' => $request->bearerToken()], 401);
 }
 
 }
