@@ -9,7 +9,11 @@ class MaintenanceController extends Controller
 {
     public function index()
     {
-        return response()->json(Maintenance::with('car')->get());
+        $maintenances = Maintenance::with('car')->get();
+        return response()->json([
+            'code' => '200',
+            'data' => $maintenances
+        ]);
     }
 
     public function store(Request $request)
@@ -23,12 +27,18 @@ class MaintenanceController extends Controller
 
         $maintenance = Maintenance::create($request->all());
 
-        return response()->json($maintenance, 201);
+        return response()->json([
+            'code' => '201',
+            'data' => $maintenance
+        ], 201);
     }
 
     public function show(Maintenance $maintenance)
     {
-        return response()->json($maintenance->load('car'));
+        return response()->json([
+            'code' => '200',
+            'data' => $maintenance->load('car')
+        ]);
     }
 
     public function update(Request $request, Maintenance $maintenance)
@@ -42,14 +52,19 @@ class MaintenanceController extends Controller
 
         $maintenance->update($request->all());
 
-        return response()->json($maintenance);
+        return response()->json([
+            'code' => '200',
+            'data' => $maintenance
+        ]);
     }
 
     public function destroy(Maintenance $maintenance)
     {
         $maintenance->delete();
 
-        return response()->json(null, 204);
+        return response()->json([
+            'code' => '204',
+            'data' => null
+        ], 204);
     }
 }
-

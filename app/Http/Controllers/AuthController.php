@@ -22,21 +22,41 @@ class AuthController extends Controller
             $user->remember_token = $token;
             $user->save();
 
-            return response()->json(['token' => $token], 200);
+            return response()->json([
+                'code' => '200',
+                'data' => [
+                    'id' => $user->id,
+                    'token' => $token,
+                ]
+            ], 200);
         }
 
-        return response()->json(['error' => 'Invalid credentials'], 401);
+        return response()->json([
+            'code' => '401',
+            'data' => [
+                'error' => 'Invalid credentials'
+            ]
+        ], 401);
     }
 
     public function logout(Request $request)
-{
-    $user = User::where('remember_token', $request->bearerToken())->first();
-    if ($user) {
-        $user->remember_token = null;
-        $user->save();
-        return response()->json(['message' => 'Déconnexion réussie'], 200);
+    {
+        $user = User::where('remember_token', $request->bearerToken())->first();
+        if ($user) {
+            $user->remember_token = null;
+            $user->save();
+            return response()->json([
+                'code' => '200',
+                'data' => [
+                    'message' => 'Déconnexion réussie'
+                ]
+            ], 200);
+        }
+        return response()->json([
+            'code' => '401',
+            'data' => [
+                'message' => 'Token invalide'
+            ]
+        ], 401);
     }
-    return response()->json(['message' => $request->bearerToken()], 401);
-}
-
 }

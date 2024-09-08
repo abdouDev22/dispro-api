@@ -9,7 +9,11 @@ class CountController extends Controller
 {
     public function index()
     {
-        return response()->json(Count::with('user', 'car')->get());
+        $counts = Count::with('user', 'car')->get();
+        return response()->json([
+            'code' => '200',
+            'data' => $counts
+        ]);
     }
 
     public function store(Request $request)
@@ -24,12 +28,18 @@ class CountController extends Controller
 
         $count = Count::create($request->all());
 
-        return response()->json($count, 201);
+        return response()->json([
+            'code' => '201',
+            'data' => $count
+        ], 201);
     }
 
     public function show(Count $count)
     {
-        return response()->json($count->load('user', 'car'));
+        return response()->json([
+            'code' => '200',
+            'data' => $count->load('user', 'car')
+        ]);
     }
 
     public function update(Request $request, Count $count)
@@ -44,14 +54,19 @@ class CountController extends Controller
 
         $count->update($request->all());
 
-        return response()->json($count);
+        return response()->json([
+            'code' => '200',
+            'data' => $count
+        ]);
     }
 
     public function destroy(Count $count)
     {
         $count->delete();
 
-        return response()->json(null, 204);
+        return response()->json([
+            'code' => '204',
+            'data' => null
+        ], 204);
     }
 }
-
